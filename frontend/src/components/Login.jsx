@@ -15,7 +15,7 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     setError('');
-
+    try {
       const API_URL = import.meta.env.VITE_API_URL || '';
       const response = await axios.post(`${API_URL}/api/auth/login`, { email, password });
       localStorage.setItem('adminToken', response.data.token);
