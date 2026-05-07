@@ -24,7 +24,9 @@ const Hero = () => {
           transition={{ duration: 0.8 }}
         >
           <span className="inline-block px-4 py-1.5 mb-6 text-sm font-semibold tracking-wider text-blue-400 uppercase bg-blue-400/10 border border-blue-400/20 rounded-full">
-            Expert Repair Service in Nepal
+            Expert Repair Service in Nepal By  <motion.p
+            animate={{ x: [0, 20, 0] }}
+transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}>Tanka Raj Bam</motion.p>
           </span>
           <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
             Professional Counting <br />

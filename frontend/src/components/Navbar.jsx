@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Sun, Moon, Menu, X, Settings } from 'lucide-react';
+import { Sun, Moon, Menu, X } from 'lucide-react';
 import { Link, NavLink } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import logo from '../assets/logo1.jpeg'
 
 const Navbar = ({ darkMode, toggleDarkMode }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,6 +23,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
     { name: 'Pricing', to: '/pricing' },
     { name: 'Gallery', to: '/gallery' },
     { name: 'FAQ', to: '/faq' },
+    { name: 'Upcoming', to: '/upcoming' },
     { name: 'Contact', to: '/contact' },
   ];
 
@@ -33,8 +35,9 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <Link to="/" className="flex items-center gap-2">
-            <div className="bg-blue-600 p-2 rounded-lg">
-              <Settings className="text-white w-6 h-6 animate-spin-slow" />
+            <div className="bg-blue-400  rounded-full">
+              <img className='w-10 h-10 rounded-full' src={logo} alt="Logo" />
+              
             </div>
             <span className={`text-xl font-bold ${scrolled || darkMode || isOpen ? 'text-white' : 'text-slate-900'}`}>
               Laxmi<span className="text-blue-600">AutoMachine</span>

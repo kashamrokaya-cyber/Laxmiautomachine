@@ -4,9 +4,9 @@ import { CheckCircle2, Users, Clock, Globe } from 'lucide-react';
 
 const About = () => {
   const stats = [
-    { label: 'Technicians', value: '15+', icon: <Users /> },
-    { label: 'Years Experience', value: '10+', icon: <Clock /> },
-    { label: 'Service Coverage', value: '77 Districts', icon: <Globe /> },
+    { label: 'Technicians', value: '10+', icon: <Users /> },
+    { label: 'Years Experience', value: '5+', icon: <Clock /> },
+    { label: 'Service Coverage', value: '5+ Districts', icon: <Globe /> },
     { label: 'Satisfied Clients', value: '5000+', icon: <CheckCircle2 /> }
   ];
 

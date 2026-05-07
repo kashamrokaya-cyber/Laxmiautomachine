@@ -131,7 +131,7 @@ const BookingForm = () => {
               onChange={(e) => setFormData({...formData, serviceType: e.target.value})}
             >
               <option>Repair Service</option>
-              <option>Maintenance Service</option>
+              <option>New Machine </option>
               <option>Spare Parts</option>
               <option>AMC Package</option>
             </select>

@@ -17,6 +17,7 @@ import PageWrapper from './components/PageWrapper';
 import AdminDashboard from './components/AdminDashboard';
 import Login from './components/Login';
 import ProtectedRoute from './components/ProtectedRoute';
+import Upcoming from './components/Upcoming';
 
 // Scroll to top on route change
 const ScrollToTop = () => {
@@ -40,6 +41,7 @@ const AnimatedRoutes = ({ darkMode, toggleDarkMode }) => {
         <Route path="/gallery" element={<PageWrapper><Gallery /></PageWrapper>} />
         <Route path="/faq" element={<PageWrapper><FAQ /></PageWrapper>} />
         <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
+        <Route path="/upcoming" element={<PageWrapper><Upcoming /></PageWrapper>} />
         <Route path="/login" element={<PageWrapper><Login /></PageWrapper>} />
         <Route 
           path="/admin" 

@@ -4,10 +4,10 @@ import BookingForm from './BookingForm';
 
 const Contact = () => {
   const contactInfo = [
-    { icon: <Phone className="text-blue-600" />, label: 'Phone', value: '+977 9847675568' },
+    { icon: <Phone className="text-blue-600" />, label: 'Phone', value: '+977 9847348949' },
     { icon: <MessageCircle className="text-green-500" />, label: 'WhatsApp', value: '+977 9847675568', isLink: true },
-    { icon: <Mail className="text-red-500" />, label: 'Email', value: 'repair@countfix.com' },
-    { icon: <MapPin className="text-purple-600" />, label: 'Location', value: 'New Baneshwor, Kathmandu, Nepal' },
+    { icon: <Mail className="text-red-500" />, label: 'Email', value: 'laxmiautomachine@gmail.com' },
+    { icon: <MapPin className="text-purple-600" />, label: 'Location', value: 'Suryabinayk-2, Balkot Bhaktapur' },
   ];
 
   return (

@@ -1,6 +1,7 @@
 import React from 'react';
-import { Globe, Send, Camera, Link2, Settings } from 'lucide-react';
+import { Globe, Send, Camera, Settings } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { FaFacebook, FaInstagram, FaTelegram, FaTiktok, FaYoutube } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -20,17 +21,17 @@ const Footer = () => {
               The most trusted counting machine repair service provider in Nepal. We ensure your business never stops.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center hover:bg-blue-600 transition-colors">
-                <Globe className="w-5 h-5" />
+              <a href="https://www.instagram.com/laxmiautomachine?igsh=eTB4amptOTR2anI2" className="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center hover:bg-blue-600 transition-colors">
+                <FaInstagram className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center hover:bg-blue-600 transition-colors">
-                <Camera className="w-5 h-5" />
+              <a href="https://www.tiktok.com/@notecountingmachinerepai?_r=1&_t=ZS-96AGCxbdimC" className="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center hover:bg-blue-600 transition-colors">
+                <FaTiktok className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center hover:bg-blue-600 transition-colors">
-                <Send className="w-5 h-5" />
+              <a href="https://youtube.com/@notecountingmachinenepal?si=1xep6qQk-EgF8pB2" className="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center hover:bg-blue-600 transition-colors">
+               <FaYoutube className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center hover:bg-blue-600 transition-colors">
-                <Link2 className="w-5 h-5" />
+              <a href="https://www.facebook.com/laxmi.automachine?mibextid=ZbWKwL" className="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center hover:bg-blue-600 transition-colors">
+                <FaFacebook className="w-5 h-5" />
               </a>
             </div>
           </div>
@@ -60,8 +61,8 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-bold mb-6">Contact Info</h4>
             <ul className="space-y-4 text-slate-400">
-              <li>New Baneshwor, Kathmandu</li>
-              <li>+977 9847675568</li>
+              <li>Suryabinayak-2, Balkot Bhaktapur</li>
+              <li>+977 9825474487</li>
               <li>Laxmiautomachine@gmail.com</li>
               <li>www.laxmiautomachine.com</li>
             </ul>
