@@ -4,7 +4,8 @@ import { io } from 'socket.io-client';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Clock, Phone, MapPin, User, Wrench, AlertCircle, Bell, Mail } from 'lucide-react';
 
-const socket = io();
+const API_URL = import.meta.env.VITE_API_URL || '';
+const socket = io(API_URL);
 
 const AdminDashboard = () => {
   const [requests, setRequests] = useState([]);
@@ -30,7 +31,7 @@ const AdminDashboard = () => {
   const fetchRequests = async () => {
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await axios.get('/api/bookings', {
+      const response = await axios.get(`${API_URL}/api/bookings`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setRequests(response.data);
@@ -48,7 +49,7 @@ const AdminDashboard = () => {
   const handleArchive = async (id) => {
     try {
       const token = localStorage.getItem('adminToken');
-      await axios.patch(`/api/bookings/${id}/archive`, {}, {
+      await axios.patch(`${API_URL}/api/bookings/${id}/archive`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setRequests((prev) => prev.filter((req) => req._id !== id));

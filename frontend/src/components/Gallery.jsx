@@ -3,15 +3,17 @@ import { motion } from 'framer-motion';
 import gallery1 from '../assets/gallery_1.png';
 import gallery2 from '../assets/gallery_2.png';
 import gallery3 from '../assets/gallery_3.png';
+import download from '../assets/download.jpg'
+import buildingHome from '../assets/buildingHome.jpg'
 
 const images = [
   gallery1,
   gallery2,
   gallery3,
-  'https://images.unsplash.com/photo-1554224155-169641357599?auto=format&fit=crop&q=80&w=600',
-  'https://images.unsplash.com/photo-1621905235277-227091942738?auto=format&fit=crop&q=80&w=600',
-  'https://images.unsplash.com/photo-1596753120152-32a2656345ec?auto=format&fit=crop&q=80&w=600',
+  download,
+  buildingHome
 ];
+
 
 const Gallery = () => {
   return (

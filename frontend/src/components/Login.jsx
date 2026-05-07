@@ -16,8 +16,8 @@ const Login = () => {
     setLoading(true);
     setError('');
 
-    try {
-      const response = await axios.post('/api/auth/login', { email, password });
+      const API_URL = import.meta.env.VITE_API_URL || '';
+      const response = await axios.post(`${API_URL}/api/auth/login`, { email, password });
       localStorage.setItem('adminToken', response.data.token);
       localStorage.setItem('adminUser', JSON.stringify(response.data.user));
       navigate('/admin');

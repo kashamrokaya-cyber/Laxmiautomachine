@@ -18,8 +18,9 @@ const BookingForm = () => {
     e.preventDefault();
     setStatus('loading');
     
+    const API_URL = import.meta.env.VITE_API_URL || '';
     try {
-      const response = await fetch('/api/bookings', {
+      const response = await fetch(`${API_URL}/api/bookings`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
