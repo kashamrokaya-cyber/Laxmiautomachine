@@ -39,20 +39,27 @@ mongoose.connect(MONGODB_URI)
 
 // Seed Admin Function
 async function seedAdmin() {
-  const hashedPassword = await bcrypt.hash('admin123', 10);
-  const admin = await User.findOne({ email: 'admin@countfix.com' });
-  
-  if (!admin) {
-    await User.create({
-      email: 'admin@countfix.com',
-      password: hashedPassword,
-      role: 'admin'
-    });
-    console.log('Admin user created');
-  } else {
-    admin.password = hashedPassword;
-    await admin.save();
-    console.log('Admin user updated');
+  try {
+    const adminEmail = 'admin@laxmiauto.com';
+    const adminPassword = 'admin123';
+    const hashedPassword = await bcrypt.hash(adminPassword, 10);
+    
+    let admin = await User.findOne({ email: adminEmail });
+    
+    if (!admin) {
+      await User.create({
+        email: adminEmail,
+        password: hashedPassword,
+        role: 'admin'
+      });
+      console.log('Admin user created: ' + adminEmail);
+    } else {
+      admin.password = hashedPassword;
+      await admin.save();
+      console.log('Admin user password updated: ' + adminEmail);
+    }
+  } catch (error) {
+    console.error('Admin seeding failed:', error);
   }
 }
 
