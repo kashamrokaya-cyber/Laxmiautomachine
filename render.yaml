@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: laxmiauto-backend
+    env: node
+    rootDir: backend
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: PORT
+        value: 5000
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
