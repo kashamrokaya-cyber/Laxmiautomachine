@@ -8,7 +8,6 @@ import Services from './components/Services';
 import About from './components/About';
 import Pricing from './components/Pricing';
 import Gallery from './components/Gallery';
-import Testimonials from './components/Testimonials';
 import ServicedBanks from './components/ServicedBanks';
 import Contact from './components/Contact';
 import Footer from './components/Footer';

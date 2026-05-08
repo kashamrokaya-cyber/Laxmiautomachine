@@ -52,12 +52,15 @@ const Upcoming = () => {
           {futureLocations.map((loc, index) => (
             <motion.div
               key={index}
+              
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.2 }}
+              
               className="group p-8 rounded-3xl bg-slate-900/50 border border-slate-800 hover:border-blue-500/50 transition-all"
             >
+             
               <div className="w-14 h-14 bg-blue-600/10 text-blue-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 <MapPin className="w-7 h-7" />
               </div>

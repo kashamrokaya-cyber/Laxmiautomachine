@@ -19,12 +19,11 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
   const navLinks = [
     { name: 'Home', to: '/' },
     { name: 'Services', to: '/services' },
-    { name: 'About', to: '/about' },
     { name: 'Pricing', to: '/pricing' },
     { name: 'Gallery', to: '/gallery' },
     { name: 'Banks', to: '/serviced-banks' },
     { name: 'Upcoming', to: '/upcoming' },
-    { name: 'Contact', to: '/contact' },
+  
   ];
 
   return (

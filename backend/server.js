@@ -16,8 +16,8 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: { 
-    origin: ["http://localhost:5173", "https://laxmiautomachine.vercel.app"], // Add your Vercel URL here later
-    methods: ["GET", "POST", "PATCH"] 
+    origin: ["http://localhost:5173", "https://laxmiautomachine.vercel.app", /\.vercel\.app$/],
+    methods: ["GET", "POST", "PATCH", "DELETE"] 
   }
 });
 
@@ -110,6 +110,24 @@ app.get('/api/bookings', protect, async (req, res) => {
   try {
     const bookings = await Booking.find({ status: { $ne: 'archived' } }).sort({ createdAt: -1 });
     res.json(bookings);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+app.get('/api/bookings/history', protect, async (req, res) => {
+  try {
+    const bookings = await Booking.find({ status: 'archived' }).sort({ createdAt: -1 });
+    res.json(bookings);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+app.delete('/api/bookings/:id', protect, async (req, res) => {
+  try {
+    await Booking.findByIdAndDelete(req.params.id);
+    res.json({ message: 'Booking deleted permanently' });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
