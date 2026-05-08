@@ -28,10 +28,12 @@ const BookingForm = () => {
         body: JSON.stringify(formData),
       });
 
-      if (response.ok) {
+      const contentType = response.headers.get("content-type");
+      if (response.ok && contentType && contentType.indexOf("application/json") !== -1) {
         setStatus('success');
         setFormData({ name: '', phone: '', address: '', problem: '', brand: '', serviceType: 'Repair Service' });
       } else {
+        console.error('Invalid response from server:', await response.text());
         setStatus('error');
       }
     } catch (error) {

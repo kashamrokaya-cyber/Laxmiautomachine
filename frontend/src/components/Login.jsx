@@ -22,7 +22,11 @@ const Login = () => {
       localStorage.setItem('adminUser', JSON.stringify(response.data.user));
       navigate('/admin');
     } catch (err) {
-      setError(err.response?.data?.message || 'Login failed. Please check your credentials.');
+      if (err.code === 'ERR_NETWORK') {
+        setError('Cannot connect to server. Please check your VITE_API_URL or internet connection.');
+      } else {
+        setError(err.response?.data?.message || 'Login failed. Please check your credentials.');
+      }
     } finally {
       setLoading(false);
     }
@@ -54,7 +58,7 @@ const Login = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full pl-12 pr-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none transition-all"
-                placeholder="admin@countfix.com"
+                placeholder="admin@laxmiauto.com"
               />
             </div>
           </div>

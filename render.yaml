@@ -10,6 +10,7 @@ services:
       - key: PORT
         value: 5000
       - key: MONGODB_URI
-        sync: false
+        sync: "mongodb://kushalrokaya012_db_user:tankarajbamthakuri@ac-bhsp3ag-shard-00-00.jcvjgqd.mongodb.net:27017,ac-bhsp3ag-shard-00-01.jcvjgqd.mongodb.net:27017,ac-bhsp3ag-shard-00-02.jcvjgqd.mongodb.net:27017/countingMachine?ssl=true&replicaSet=atlas-ue1fkf-shard-0&authSource=admin&retryWrites=true&w=majority"
       - key: JWT_SECRET
         generateValue: true
+        

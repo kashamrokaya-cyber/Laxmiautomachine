@@ -23,11 +23,16 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <span className="inline-block px-4 py-1.5 mb-6 text-sm font-semibold tracking-wider text-blue-400 uppercase bg-blue-400/10 border border-blue-400/20 rounded-full">
-            Expert Repair Service in Nepal via  <motion.p
-              animate={{ x: [0, 20, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }} className='text-white'>Tanka Raj Bam</motion.p>
-          </span>
+          <div className="inline-flex flex-col sm:flex-row items-center gap-2 px-4 py-1.5 mb-6 text-sm font-semibold tracking-wider text-blue-400 uppercase bg-blue-400/10 border border-blue-400/20 rounded-full">
+            <span>Expert Repair Service in Nepal via</span>
+            <motion.span
+              animate={{ x: [0, 5, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }} 
+              className='text-white'
+            >
+              Tanka Raj Bam
+            </motion.span>
+          </div>
           <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
             Professional Counting <br />
             <span className="text-blue-500">Machine Repair</span> Services

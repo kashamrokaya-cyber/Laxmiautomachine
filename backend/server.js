@@ -40,13 +40,13 @@ mongoose.connect(MONGODB_URI)
 // Seed Admin Function
 async function seedAdmin() {
   try {
-    const adminEmail = 'admin@laxmiauto.com';
-    const adminPassword = 'admin123';
-    const hashedPassword = await bcrypt.hash(adminPassword, 10);
+    const adminEmail = process.env.ADMIN_EMAIL_LOGIN || 'admin@laxmiauto.com';
+    const adminPassword = process.env.ADMIN_PASSWORD_LOGIN || 'admin123';
     
     let admin = await User.findOne({ email: adminEmail });
     
     if (!admin) {
+      const hashedPassword = await bcrypt.hash(adminPassword, 10);
       await User.create({
         email: adminEmail,
         password: hashedPassword,
@@ -54,9 +54,15 @@ async function seedAdmin() {
       });
       console.log('Admin user created: ' + adminEmail);
     } else {
-      admin.password = hashedPassword;
-      await admin.save();
-      console.log('Admin user password updated: ' + adminEmail);
+      // Only update if environment variables are provided to force a reset
+      if (process.env.RESET_ADMIN === 'true') {
+        const hashedPassword = await bcrypt.hash(adminPassword, 10);
+        admin.password = hashedPassword;
+        await admin.save();
+        console.log('Admin user password reset: ' + adminEmail);
+      } else {
+        console.log('Admin user already exists: ' + adminEmail);
+      }
     }
   } catch (error) {
     console.error('Admin seeding failed:', error);
