@@ -68,18 +68,18 @@ const BookingForm = () => {
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Full Name</label>
+            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Full Name *</label>
             <input
               type="text"
               required
               className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none transition-all"
-              placeholder="e.g. Ram Bahadur"
+              placeholder="e.g. Tanka Raj Bam(owner)"
               value={formData.name}
               onChange={(e) => setFormData({...formData, name: e.target.value})}
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Phone Number</label>
+            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Phone Number *</label>
             <input
               type="tel"
               required
@@ -91,29 +91,30 @@ const BookingForm = () => {
           </div>
         </div>
         <div>
-          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Email Address (Optional)</label>
+          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Email Address *</label>
           <input
             type="email"
             className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none transition-all"
             placeholder="e.g. ram@example.com"
             value={formData.email}
+            required
             onChange={(e) => setFormData({...formData, email: e.target.value})}
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Address</label>
+          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Address *</label>
           <input
             type="text"
             required
             className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none transition-all"
-            placeholder="e.g. New Baneshwor, Kathmandu"
+            placeholder="e.g. Suryabinayk,  Bhaktapur Nepal"
             value={formData.address}
             onChange={(e) => setFormData({...formData, address: e.target.value})}
           />
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Machine Brand</label>
+            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Machine Brand *</label>
             <input
               type="text"
               required
@@ -130,15 +131,15 @@ const BookingForm = () => {
               value={formData.serviceType}
               onChange={(e) => setFormData({...formData, serviceType: e.target.value})}
             >
+              <option>Purchase of New Machine </option>
               <option>Repair Service</option>
-              <option>New Machine </option>
               <option>Spare Parts</option>
               <option>AMC Package</option>
             </select>
           </div>
         </div>
         <div>
-          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Machine Problem</label>
+          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Machine Problem *</label>
           <textarea
             rows="3"
             required

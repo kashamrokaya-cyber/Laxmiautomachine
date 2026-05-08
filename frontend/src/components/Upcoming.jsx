@@ -5,9 +5,11 @@ import { MapPin, Clock } from 'lucide-react';
 
 const Upcoming = () => {
   const futureLocations = [
-    { city: 'Pokhara', address: 'Lakeside, Ward 6', eta: 'Q3 2024' },
-    { city: 'Butwal', address: 'Traffic Chowk, Main Road', eta: 'Q4 2024' },
-    { city: 'Biratnagar', address: 'Main Road, Ward 7', eta: 'Q1 2025' }
+    { city: 'Pokhara', address: 'New Road', eta: 'Q3 2028' },
+    { city: 'Butwal', address: 'Traffic Chowk, Main Road', eta: 'Q4 2027' },
+    { city: 'Biratnagar', address: 'Main Road, Ward 7', eta: 'Q1 2027' },
+    { city: 'Nepalgunj', address: 'Dhamboji', eta: 'Q2 2027' },
+    { city: 'Chitwan', address: 'NarayanGhad', eta: 'Q3 2027' }
   ];
 
   return (
@@ -15,9 +17,9 @@ const Upcoming = () => {
       {/* Hero Section */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img 
-            src={workshopBg} 
-            alt="Future Workshop" 
+          <img
+            src={workshopBg}
+            alt="Future Workshop"
             className="w-full h-full object-cover opacity-40 scale-110"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-950/50 to-slate-950" />
@@ -37,7 +39,7 @@ const Upcoming = () => {
               <span className="text-blue-500">Service Hubs</span>
             </h1>
             <p className="max-w-2xl mx-auto text-xl text-slate-300">
-              We are expanding our reach to provide expert counting machine repair services 
+              We are expanding our reach to provide expert counting machine repair services
               closer to your business location.
             </p>
           </motion.div>
@@ -71,7 +73,7 @@ const Upcoming = () => {
           ))}
         </div>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           className="mt-24 p-12 rounded-3xl bg-blue-600 text-center text-white overflow-hidden relative"
@@ -79,7 +81,7 @@ const Upcoming = () => {
           <div className="relative z-10">
             <h2 className="text-3xl font-bold mb-4">Want us in your city?</h2>
             <p className="text-blue-100 mb-8 max-w-xl mx-auto">
-              Suggest a location for our next service hub and get priority support 
+              Suggest a location for our next service hub and get priority support
               when we open in your area.
             </p>
             <button className="bg-white text-blue-600 px-8 py-4 rounded-xl font-bold hover:bg-blue-50 transition-colors">

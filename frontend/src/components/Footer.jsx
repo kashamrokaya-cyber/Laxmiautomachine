@@ -1,7 +1,8 @@
 import React from 'react';
 import { Globe, Send, Camera, Settings } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { FaFacebook, FaInstagram, FaTelegram, FaTiktok, FaYoutube } from "react-icons/fa";
+import Logo from '../assets/logo1.jpeg'
+import { FaFacebook, FaInstagram, FaTiktok, FaYoutube } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -9,12 +10,12 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="col-span-1 md:col-span-1">
-            <div className="flex items-center gap-2 mb-6">
-              <div className="bg-blue-600 p-2 rounded-lg">
-                <Settings className="text-white w-6 h-6" />
+            <div className="flex items-center gap-1 mb-6">
+              <div className="bg-blue-600 p-1 rounded-full">
+                <img className='w-10 h-10 rounded-full' src={Logo} alt="Logo" />
               </div>
               <span className="text-2xl font-bold">
-                Laxmi<span className="text-blue-600">Auto</span>
+                Laxmi<span className="text-blue-600">AutoMachine</span>
               </span>
             </div>
             <p className="text-slate-400 mb-6">

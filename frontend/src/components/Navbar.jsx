@@ -22,7 +22,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
     { name: 'About', to: '/about' },
     { name: 'Pricing', to: '/pricing' },
     { name: 'Gallery', to: '/gallery' },
-    { name: 'FAQ', to: '/faq' },
+    { name: 'Banks', to: '/serviced-banks' },
     { name: 'Upcoming', to: '/upcoming' },
     { name: 'Contact', to: '/contact' },
   ];

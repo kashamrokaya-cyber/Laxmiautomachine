@@ -5,9 +5,9 @@ import BookingForm from './BookingForm';
 const Contact = () => {
   const contactInfo = [
     { icon: <Phone className="text-blue-600" />, label: 'Phone', value: '+977 9847348949' },
-    { icon: <MessageCircle className="text-green-500" />, label: 'WhatsApp', value: '+977 9847675568', isLink: true },
+    { icon: <MessageCircle className="text-green-500" />, label: 'WhatsApp', value: '+977 9848109713', isLink: true },
     { icon: <Mail className="text-red-500" />, label: 'Email', value: 'laxmiautomachine@gmail.com' },
-    { icon: <MapPin className="text-purple-600" />, label: 'Location', value: 'Suryabinayk-2, Balkot Bhaktapur' },
+    { icon: <MapPin className="text-purple-600" />, label: 'Location', value: 'Suryabinayk,  Bhaktapur Nepal' },
   ];
 
   return (
@@ -41,12 +41,12 @@ const Contact = () => {
               </div>
               <div className="space-y-2 text-slate-600 dark:text-slate-400">
                 <div className="flex justify-between">
-                  <span>Sunday - Friday:</span>
+                  <span>Monday - Friday</span>
                   <span className="font-semibold">9:00 AM - 6:00 PM</span>
                 </div>
                 <div className="flex justify-between">
-                  <span>Saturday:</span>
-                  <span className="font-semibold text-red-500">Closed</span>
+                  <span>Saturday-Sunday</span>
+                  <span className="font-semibold">8:00 AM -8:00 PM</span>
                 </div>
               </div>
             </div>

@@ -9,7 +9,7 @@ import About from './components/About';
 import Pricing from './components/Pricing';
 import Gallery from './components/Gallery';
 import Testimonials from './components/Testimonials';
-import FAQ from './components/FAQ';
+import ServicedBanks from './components/ServicedBanks';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
@@ -39,7 +39,7 @@ const AnimatedRoutes = ({ darkMode, toggleDarkMode }) => {
         <Route path="/about" element={<PageWrapper><About /></PageWrapper>} />
         <Route path="/pricing" element={<PageWrapper><Pricing /></PageWrapper>} />
         <Route path="/gallery" element={<PageWrapper><Gallery /></PageWrapper>} />
-        <Route path="/faq" element={<PageWrapper><FAQ /></PageWrapper>} />
+        <Route path="/serviced-banks" element={<PageWrapper><ServicedBanks /></PageWrapper>} />
         <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
         <Route path="/upcoming" element={<PageWrapper><Upcoming /></PageWrapper>} />
         <Route path="/login" element={<PageWrapper><Login /></PageWrapper>} />

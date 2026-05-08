@@ -10,6 +10,7 @@ require('dotenv').config();
 
 const Booking = require('./models/Booking');
 const User = require('./models/User');
+const Bank = require('./models/Bank');
 
 const app = express();
 const server = http.createServer(app);
@@ -109,6 +110,35 @@ app.get('/api/bookings', protect, async (req, res) => {
   try {
     const bookings = await Booking.find({ status: { $ne: 'archived' } }).sort({ createdAt: -1 });
     res.json(bookings);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+// Bank Routes
+app.get('/api/banks', async (req, res) => {
+  try {
+    const banks = await Bank.find().sort({ createdAt: -1 });
+    res.json(banks);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+// app.post('/api/banks', protect, async (req, res) => {
+//   try {
+//     const newBank = new Bank(req.body);
+//     const savedBank = await newBank.save();
+//     res.status(201).json(savedBank);
+//   } catch (error) {
+//     res.status(400).json({ message: error.message });
+//   }
+// });
+
+app.delete('/api/banks/:id', protect, async (req, res) => {
+  try {
+    await Bank.findByIdAndDelete(req.params.id);
+    res.json({ message: 'Bank deleted' });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

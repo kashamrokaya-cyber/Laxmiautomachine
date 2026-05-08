@@ -6,7 +6,7 @@ const About = () => {
   const stats = [
     { label: 'Technicians', value: '10+', icon: <Users /> },
     { label: 'Years Experience', value: '5+', icon: <Clock /> },
-    { label: 'Service Coverage', value: '5+ Districts', icon: <Globe /> },
+    { label: 'Service Coverage', value: '25+ Districts', icon: <Globe /> },
     { label: 'Satisfied Clients', value: '5000+', icon: <CheckCircle2 /> }
   ];
 
