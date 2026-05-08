@@ -10,7 +10,7 @@ require('dotenv').config();
 
 const Booking = require('./models/Booking');
 const User = require('./models/User');
-const Bank = require('./models/Bank');
+
 
 const app = express();
 const server = http.createServer(app);
