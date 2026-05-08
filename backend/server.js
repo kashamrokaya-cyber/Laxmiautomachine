@@ -59,15 +59,21 @@ async function seedAdmin() {
 // Auth Middleware
 const protect = (req, res, next) => {
   const token = req.headers.authorization?.split(' ')[1];
-  if (!token) return res.status(401).json({ message: 'Unauthorized' });
+  if (!token) return res.status(401).json({ message: 'No token, authorization denied' });
+
   try {
     const decoded = jwt.verify(token, JWT_SECRET);
     req.user = decoded;
     next();
   } catch (err) {
-    res.status(401).json({ message: 'Invalid token' });
+    res.status(401).json({ message: 'Token is not valid' });
   }
 };
+
+// Root Route
+app.get('/', (req, res) => {
+  res.send('LaxmiAuto Backend is running successfully!');
+});
 
 // Routes
 app.post('/api/auth/login', async (req, res) => {
