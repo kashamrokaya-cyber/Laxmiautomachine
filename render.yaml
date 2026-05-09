@@ -11,7 +11,7 @@ services:
       - key: PORT
         value: 5000
       - key: MONGODB_URI
-        value: "mongodb+srv://kushalrokaya472_db_user:laxmiautomachineproject@laxmi.wcnvsnc.mongodb.net/laxmiauto_db?appName=laxmi"
+        value: "mongodb+srv://kushalrokaya472_db_user:automachinelaxmi@cluster12.jbyn7zb.mongodb.net/laxmiauto_db?appName=Cluster12"
       - key: JWT_SECRET
         generateValue: true
       - key: NODE_ENV

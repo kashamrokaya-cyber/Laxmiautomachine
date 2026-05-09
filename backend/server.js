@@ -22,8 +22,6 @@ app.use(cors({
   origin: [
     "http://localhost:5173", 
     "http://localhost:5174", 
-    "https://laxmiautomachine.vercel.app", 
-    /\.vercel\.app$/,
     "https://laxmiauto-frontend.onrender.com",
     /\.onrender\.com$/
   ],
@@ -39,7 +37,7 @@ app.use((req, res, next) => {
 });
 
 // MongoDB Connection
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://kushalrokaya472_db_user:laxmiautomachineproject@laxmi.wcnvsnc.mongodb.net/laxmiauto_db?appName=laxmi';
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://kushalrokaya472_db_user:automachinelaxmi@cluster12.jbyn7zb.mongodb.net/laxmiauto_db?appName=Cluster12';
 
 mongoose.connect(MONGODB_URI)
   .then(() => {
