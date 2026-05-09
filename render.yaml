@@ -1,4 +1,5 @@
 services:
+  # Backend Web Service
   - type: web
     name: laxmiauto-backend
     env: node
@@ -10,7 +11,26 @@ services:
       - key: PORT
         value: 5000
       - key: MONGODB_URI
-        value: "mongodb://kushalrokaya012_db_user:tankarajbamthakuri@ac-bhsp3ag-shard-00-00.jcvjgqd.mongodb.net:27017,ac-bhsp3ag-shard-00-01.jcvjgqd.mongodb.net:27017,ac-bhsp3ag-shard-00-02.jcvjgqd.mongodb.net:27017/countingMachine?ssl=true&replicaSet=atlas-ue1fkf-shard-0&authSource=admin&retryWrites=true&w=majority"
+        value: "mongodb+srv://kushalrokaya472_db_user:laxmiautomachineproject@laxmi.wcnvsnc.mongodb.net/laxmiauto_db?appName=laxmi"
       - key: JWT_SECRET
         generateValue: true
-        
+      - key: NODE_ENV
+        value: production
+
+  # Frontend Static Site
+  - type: web
+    name: laxmiauto-frontend
+    env: static
+    rootDir: frontend
+    plan: free
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: laxmiauto-backend
+          property: host
+    rewriteRules:
+      - source: /.*
+        destination: /index.html

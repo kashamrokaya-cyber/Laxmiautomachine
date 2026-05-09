@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { io } from 'socket.io-client';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Clock, Phone, MapPin, User, Wrench, AlertCircle, Bell, Mail, X } from 'lucide-react';
+import { Clock, Phone, MapPin, User, Wrench, AlertCircle, Bell, Mail, RefreshCw, LogOut } from 'lucide-react';
 
 const API_URL = import.meta.env.VITE_API_URL || '';
-const socket = io(API_URL);
 
 const AdminDashboard = () => {
   const [requests, setRequests] = useState([]);
@@ -13,22 +11,19 @@ const AdminDashboard = () => {
   const [loading, setLoading] = useState(true);
   const [notification, setNotification] = useState(null);
   const [activeTab, setActiveTab] = useState('requests');
+  const [isRefreshing, setIsRefreshing] = useState(false);
+
+  const fetchAllData = async () => {
+    setIsRefreshing(true);
+    await Promise.all([fetchRequests(), fetchHistory()]);
+    setIsRefreshing(false);
+  };
 
   useEffect(() => {
-    fetchRequests();
-    fetchHistory();
-
-    socket.on('newBooking', (newRequest) => {
-      setRequests((prev) => [newRequest, ...prev]);
-      setNotification(`New request from ${newRequest.name}!`);
-      setTimeout(() => setNotification(null), 5000);
-      try {
-        const audio = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
-        audio.play();
-      } catch (e) {}
-    });
-
-    return () => socket.off('newBooking');
+    fetchAllData();
+    // Auto-refresh every 60 seconds since Socket.io is disabled
+    const interval = setInterval(fetchAllData, 60000);
+    return () => clearInterval(interval);
   }, []);
 
   const fetchRequests = async () => {
@@ -78,7 +73,6 @@ const AdminDashboard = () => {
   };
 
   const handleDeleteRequest = async (id) => {
-   
     try {
       const token = localStorage.getItem('adminToken');
       await axios.delete(`${API_URL}/api/bookings/${id}`, {
@@ -113,18 +107,23 @@ const AdminDashboard = () => {
               </button>
             </div>
           </div>
-          <div className="flex items-center gap-4">
-            <div className="bg-green-500/10 text-green-500 px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2">
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-              Live
-            </div>
+          <div className="flex items-center gap-3">
+            <button 
+              onClick={fetchAllData}
+              disabled={isRefreshing}
+              className="p-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-600 dark:text-slate-400 hover:text-blue-600 hover:border-blue-600 transition-all shadow-sm"
+              title="Refresh Data"
+            >
+              <RefreshCw className={`w-5 h-5 ${isRefreshing ? 'animate-spin' : ''}`} />
+            </button>
             <button 
               onClick={() => {
                 localStorage.removeItem('adminToken');
                 window.location.href = '/login';
               }}
-              className="px-6 py-2 bg-red-500 text-white rounded-xl font-bold text-sm hover:bg-red-600 transition-colors shadow-lg shadow-red-500/20"
+              className="flex items-center gap-2 px-6 py-3 bg-red-500 text-white rounded-xl font-bold text-sm hover:bg-red-600 transition-colors shadow-lg shadow-red-500/20"
             >
+              <LogOut className="w-4 h-4" />
               Logout
             </button>
           </div>
@@ -160,11 +159,6 @@ const AdminDashboard = () => {
                   exit={{ opacity: 0, scale: 0.9 }}
                   className="bg-white dark:bg-slate-900 p-6 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-800 hover:border-blue-500/50 transition-all group relative"
                 >
-                  {activeTab === 'history' && (
-                    <div className="absolute top-10 right-2 bg-slate-100 dark:bg-slate-800 text-slate-500 text-[10px] px-2 py-1 rounded-md font-bold uppercase tracking-wider">
-                      Archived
-                    </div>
-                  )}
                   <div className="flex justify-between items-start mb-4">
                     <div className="p-3 bg-blue-600/10 text-blue-600 rounded-2xl">
                       <User className="w-6 h-6" />

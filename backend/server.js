@@ -1,41 +1,55 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const http = require('http');
-const { Server } = require('socket.io');
 const nodemailer = require('nodemailer');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
+// Quick Fix for EBADRESP DNS Error
+const dns = require('dns');
+dns.setServers(['8.8.8.8', '8.8.4.4']);
+
 const Booking = require('./models/Booking');
 const User = require('./models/User');
 
-
 const app = express();
-const server = http.createServer(app);
-const io = new Server(server, {
-  cors: { 
-    origin: ["http://localhost:5173", "https://laxmiautomachine.vercel.app", /\.vercel\.app$/],
-    methods: ["GET", "POST", "PATCH", "DELETE"] 
-  }
-});
-
 const PORT = process.env.PORT || 5000;
 const JWT_SECRET = process.env.JWT_SECRET || 'laxmi_auto_secret_123';
 
-// Middleware
-app.use(cors());
+// CORS Middleware
+app.use(cors({
+  origin: [
+    "http://localhost:5173", 
+    "http://localhost:5174", 
+    "https://laxmiautomachine.vercel.app", 
+    /\.vercel\.app$/,
+    "https://laxmiauto-frontend.onrender.com",
+    /\.onrender\.com$/
+  ],
+  methods: ["GET", "POST", "PATCH", "DELETE"],
+  credentials: true
+}));
 app.use(express.json());
 
+// Request Logging Middleware
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.url} - ${new Date().toISOString()}`);
+  next();
+});
+
 // MongoDB Connection
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/countingMachine';
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://kushalrokaya472_db_user:laxmiautomachineproject@laxmi.wcnvsnc.mongodb.net/laxmiauto_db?appName=laxmi';
+
 mongoose.connect(MONGODB_URI)
   .then(() => {
-    console.log('MongoDB Connected');
+    const dbName = mongoose.connection.name;
+    console.log(`MongoDB Connected Successfully to Cloud DB: ${dbName}`);
     seedAdmin();
   })
-  .catch(err => console.error('MongoDB connection error:', err));
+  .catch(err => {
+    console.error('MongoDB connection error details:', err.message);
+  });
 
 // Seed Admin Function
 async function seedAdmin() {
@@ -54,7 +68,6 @@ async function seedAdmin() {
       });
       console.log('Admin user created: ' + adminEmail);
     } else {
-      // Only update if environment variables are provided to force a reset
       if (process.env.RESET_ADMIN === 'true') {
         const hashedPassword = await bcrypt.hash(adminPassword, 10);
         admin.password = hashedPassword;
@@ -107,7 +120,7 @@ app.post('/api/bookings', async (req, res) => {
   try {
     const newBooking = new Booking(req.body);
     const savedBooking = await newBooking.save();
-    io.emit('newBooking', savedBooking);
+    // Socket emit removed for Vercel compatibility
     sendAdminEmail(savedBooking).catch(err => console.error('Email failed:', err.message));
     res.status(201).json(savedBooking);
   } catch (error) {
@@ -152,35 +165,6 @@ app.delete('/api/bookings/:id', protect, async (req, res) => {
   }
 });
 
-// Bank Routes
-app.get('/api/banks', async (req, res) => {
-  try {
-    const banks = await Bank.find().sort({ createdAt: -1 });
-    res.json(banks);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
-
-// app.post('/api/banks', protect, async (req, res) => {
-//   try {
-//     const newBank = new Bank(req.body);
-//     const savedBank = await newBank.save();
-//     res.status(201).json(savedBank);
-//   } catch (error) {
-//     res.status(400).json({ message: error.message });
-//   }
-// });
-
-app.delete('/api/banks/:id', protect, async (req, res) => {
-  try {
-    await Bank.findByIdAndDelete(req.params.id);
-    res.json({ message: 'Bank deleted' });
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
-
 // Email Helpers
 async function sendAdminEmail(booking) {
   if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) return;
@@ -210,10 +194,12 @@ async function sendCustomerEmail(booking) {
   });
 }
 
-io.on('connection', (socket) => {
-  console.log('Admin connected');
-});
+// Export for Vercel
+module.exports = app;
 
-server.listen(PORT, '0.0.0.0', () => {
-  console.log(`Server running on port ${PORT}`);
-});
+// Only listen if not running as a serverless function
+if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+}

@@ -4,6 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: './',
   plugins: [react(), tailwindcss()],
   server: {
     proxy: {
@@ -11,12 +12,6 @@ export default defineConfig({
         target: 'https://laxmiauto-backend.onrender.com',
         changeOrigin: true,
         secure: false,
-      },
-      '/socket.io': {
-        target: 'https://laxmiauto-backend.onrender.com',
-        changeOrigin: true,
-        secure: false,
-        ws: true,
       },
     },
   },

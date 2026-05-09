@@ -24,7 +24,7 @@ const Hero = () => {
           transition={{ duration: 0.8 }}
         >
           <div className="inline-flex flex-col sm:flex-row items-center gap-2 px-4 py-1.5 mb-6 text-sm font-semibold tracking-wider text-blue-400 uppercase bg-blue-400/10 border border-blue-400/20 rounded-full">
-            <span>Expert Repair Service in Nepal via</span>
+            <span>Expert Repair Service in nepal via</span>
             <motion.span
               animate={{ x: [0, 5, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }} 
@@ -38,7 +38,7 @@ const Hero = () => {
             <span className="text-blue-500">Machine Repair</span> Services
           </h1>
           <p className="text-xl text-slate-300 mb-10 max-w-2xl mx-auto">
-            Fast, reliable, and professional repair services for all types of currency counting machines and money detectors across Nepal.
+            Fast, reliable, & professional repair services for all types of note counting machines and money detectors across Nepal.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
