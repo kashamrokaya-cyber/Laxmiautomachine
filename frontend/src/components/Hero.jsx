@@ -24,7 +24,7 @@ const Hero = () => {
           transition={{ duration: 0.8 }}
         >
           <div className="inline-flex flex-col sm:flex-row items-center gap-2 px-4 py-1.5 mb-6 text-sm font-semibold tracking-wider text-blue-400 uppercase bg-blue-400/10 border border-blue-400/20 rounded-full">
-            <span>Expert Repair Service in nepal via</span>
+            <span>Expert Repair Service in nepal By</span>
             <motion.span
               animate={{ x: [0, 5, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }} 
