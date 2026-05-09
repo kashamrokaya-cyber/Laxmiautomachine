@@ -39,7 +39,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
               
             </div>
             <span className={`text-xl font-bold ${scrolled || darkMode || isOpen ? 'text-white' : 'text-slate-900'}`}>
-              Laxmi<span className="text-blue-600">AutoMachine</span>
+              Laxmi<span className="text-blue-600">AutoMachineTraders</span>
             </span>
           </Link>
 

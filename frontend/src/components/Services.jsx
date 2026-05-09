@@ -1,11 +1,18 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Calculator, 
-  Search, 
-  Wrench, 
-  Cpu, 
-  Home, 
+import printing from '../servicesimages/printmoney.jpeg';
+import camera from '../servicesimages/camera.jpeg';
+import countingmachine from '../servicesimages/countingmachine.jpeg';
+import spareparts from '../servicesimages/spareparts.jpg';
+import onsite from '../servicesimages/onsite.jpg';
+import packages from '../servicesimages/packages.jpg';
+
+import {
+  Calculator,
+  Search,
+  Wrench,
+  Cpu,
+  Home,
   Calendar,
   ShieldCheck,
   Zap,
@@ -18,37 +25,38 @@ const services = [
   {
     title: 'Currency Counting Machine Repair',
     description: 'Expert repair for all brands of note counting machines. We fix sensors, motors, and displays.',
-    icon: <Calculator className="w-8 h-8" />,
+    icon: countingmachine,
     color: 'bg-blue-500'
   },
   {
     title: 'Money Detector Repair',
     description: 'Specialized maintenance for UV, MG, and IR fake note detectors to ensure maximum accuracy.',
-    icon: <Search className="w-8 h-8" />,
+    icon: printing,
     color: 'bg-cyan-500'
   },
   {
-    title: 'Machine Maintenance',
+    title: 'CCTV camera  security system',
     description: 'Regular cleaning and calibration to extend the life of your equipment and prevent breakdowns.',
-    icon: <Wrench className="w-8 h-8" />,
+    icon: camera,
     color: 'bg-indigo-500'
   },
+
   {
     title: 'Spare Parts Replacement',
     description: 'We use 100% genuine spare parts for long-lasting repairs and optimal performance.',
-    icon: <Cpu className="w-8 h-8" />,
+    icon: spareparts,
     color: 'bg-blue-600'
   },
   {
     title: 'On-site Service',
     description: 'Convenient doorstep repair services for businesses across Nepal. We come to you!',
-    icon: <Home className="w-8 h-8" />,
+    icon: onsite,
     color: 'bg-sky-500'
   },
   {
     title: 'Annual Service Package',
     description: 'Hassle-free maintenance contracts for banks, co-operatives, and retail stores.',
-    icon: <Calendar className="w-8 h-8" />,
+    icon: packages,
     color: 'bg-blue-700'
   }
 ];
@@ -66,7 +74,7 @@ const Services = () => {
     <section id="services" className="py-24 bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -74,7 +82,7 @@ const Services = () => {
           >
             Our Professional Services
           </motion.h2>
-          <motion.div 
+          <motion.div
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
@@ -96,9 +104,9 @@ const Services = () => {
               whileHover={{ y: -10 }}
               className="bg-white dark:bg-slate-800/50 p-8 rounded-2xl shadow-lg border border-slate-100 dark:border-slate-700 hover:border-blue-500/50 transition-all group"
             >
-              <div className={`${service.color} text-white w-16 h-16 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-blue-500/20 group-hover:scale-110 transition-transform`}>
-                {service.icon}
-              </div>
+              <img src={service.icon} className={`${service.color} text-white w-16 h-16 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-blue-500/20 group-hover:scale-110 transition-transform`} />
+
+
               <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4">
                 {service.title}
               </h3>

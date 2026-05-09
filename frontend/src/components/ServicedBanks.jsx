@@ -13,74 +13,84 @@ import NRB from "../bankImages/NRB.jpg"
 import Prime from "../bankImages/Prime.png"
 import Rbb from "../bankImages/rbb.jpg"
 import Pravu from "../bankImages/Pravu.jpg"
+import nepalbank from "../bankImages/nepalbank.png";
 
 
 const ServicedBanks = () => {
   const [banks, setBanks] = useState([
     {
+       
       id:1,
-      imageUrl:ADBL,
-      name:"Agriculture development Bank"
-
+      imageUrl:Nimb,
+      name:"Nepal Investment bank limited"
+    
     },
     {
       id:2,
-      imageUrl:Citizen,
-      name:"Citizen Bank",
+      imageUrl:nepalbank,
+      name:"Nepal Bank "
+    },
+   
+    {
+      id:3,
+      imageUrl:Himalayan,
+      name:"Himalayan Bank",
 
     },
     {
-      id:3,
+      id:4,
       imageUrl:Everest,
       name:"Everest Bank"
     },
     {
-      id:4,
-      imageUrl:Himalayan,
-      name:"Himalayan bank"
+      id:5,
+      imageUrl:Citizen,
+      name:"Citizen bank"
     },
     {
-      id:5,
+      id:6,
       imageUrl:LaxmiSunrise,
       name:"Laxmi Sunrise Bank"
     },
     {
-      id:6,
+      id:7,
       imageUrl:Muktinath,
       name:"Muktinath Bank"
     },
     {
-      id:7,
+      id:8,
       imageUrl:Nabil,
       name:"Nabil Bank"
     },
-    {
-      id:8,
-      imageUrl:Nimb,
-      name:"Nepal Investment bank limited"
-    },
-    {
+     {
       id:9,
+      imageUrl:ADBL,
+      name:"Agriculture development Bank"
+
+    },
+  
+    {
+      id:10,
       imageUrl:NMB,
       name:"Nepal Mega Bank"
     },
     {
-      id:10,
+      id:11,
       imageUrl:NRB,
       name:"Nepal Rastriya Bank"
     },
     {
-      id:11,
+      id:12,
       imageUrl:Prime,
       name:"Prime Bank"
     },
     {
-      id:12,
+      id:13,
       imageUrl:Rbb,
       name:"Reastriya Banijya Bank"
     },
     {
-      id:13,
+      id:14,
       imageUrl:Pravu,
       name:"Pravu Bank"
     }

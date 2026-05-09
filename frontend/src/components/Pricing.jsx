@@ -45,10 +45,9 @@ const plans = [
       'Unlimited Repairs',
       'Quarterly Maintenance',
       'Priority Support',
-      'Free Spare Parts',
-      'Replacement Machine',
+      'On-site Services',
       '1-Year Warranty'
-    ],
+   ],
     notIncluded: [],
     recommended: false
   }

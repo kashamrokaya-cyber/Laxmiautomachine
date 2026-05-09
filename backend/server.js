@@ -163,13 +163,19 @@ app.delete('/api/bookings/:id', protect, async (req, res) => {
   }
 });
 
+// Email Transporter (Created once to improve speed)
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: { 
+    user: process.env.EMAIL_USER, 
+    pass: process.env.EMAIL_PASS 
+  }
+});
+
 // Email Helpers
 async function sendAdminEmail(booking) {
   if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) return;
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: { user: process.env.EMAIL_USER, pass: process.env.EMAIL_PASS }
-  });
+  
   await transporter.sendMail({
     from: process.env.EMAIL_USER,
     to: process.env.ADMIN_EMAIL || process.env.EMAIL_USER,
@@ -180,10 +186,7 @@ async function sendAdminEmail(booking) {
 
 async function sendCustomerEmail(booking) {
   if (!booking.email || !process.env.EMAIL_USER || !process.env.EMAIL_PASS) return;
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: { user: process.env.EMAIL_USER, pass: process.env.EMAIL_PASS }
-  });
+  
   await transporter.sendMail({
     from: process.env.EMAIL_USER,
     to: booking.email,

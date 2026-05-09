@@ -34,12 +34,13 @@ const Hero = () => {
             </motion.span>
           </div>
           <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
-            Professional Counting <br />
-            <span className="text-blue-500">Machine Repair</span> Services
+            Professional  <br />
+            <span className="text-blue-500">Services For</span>  currency counting machine, printers and security system 
           </h1>
           <p className="text-xl text-slate-300 mb-10 max-w-2xl mx-auto">
-            Fast, reliable, & professional repair services for all types of note counting machines and money detectors across Nepal.
+            Fast, reliable, and professional repair services for all types of office equipments and note counting machines across Nepal.
           </p>
+
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
@@ -62,9 +63,9 @@ const Hero = () => {
 
       {/* Floating element for tech feel */}
       <motion.div
-        animate={{ y: [0, -20, 0] }}
+        animate={{ y: [0, -10, 0] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white opacity-50 hidden md:block"
+        className="absolute bottom-15 left-1/2 -translate-x-1/2 text-white opacity-50 hidden md:block"
       >
         <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center p-1">
           <div className="w-1.5 h-1.5 bg-white rounded-full"></div>

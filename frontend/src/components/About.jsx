@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import aboutpageimage from '../assets/aboutpageimage.jpeg';
 import { CheckCircle2, Users, Clock, Globe } from 'lucide-react';
 
 const About = () => {
@@ -57,7 +58,7 @@ const About = () => {
           >
             <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl relative z-10">
               <img 
-                src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=800" 
+                src={aboutpageimage}
                 alt="Repair Workshop" 
                 className="w-full h-full object-cover"
               />
@@ -68,7 +69,7 @@ const About = () => {
               <p className="text-slate-900 dark:text-white font-semibold">
                 "Fast service and genuine parts. Highly recommended for banks!"
               </p>
-              <p className="text-blue-600 text-sm mt-2">- Branch Manager, Nabil Bank</p>
+              <p className="text-blue-600 text-sm mt-2">- Branch Manager, NIMB</p>
             </div>
           </motion.div>
         </div>

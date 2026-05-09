@@ -64,8 +64,9 @@ const Footer = () => {
             <ul className="space-y-4 text-slate-400">
               <li>Suryabinayak-2, Balkot Bhaktapur</li>
               <li>+977 9825474487</li>
-              <li>Laxmiautomachine@gmail.com</li>
+              <li>laxmiautomachine@gmail.com</li>
               <li>www.laxmiautomachine.com</li>
+              
             </ul>
           </div>
         </div>
